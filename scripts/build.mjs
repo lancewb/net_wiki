@@ -269,7 +269,10 @@ const backlinks = buildBacklinks(pages)
 for (const page of pages) {
   const converted = markMermaid(convertObsidianLinks(page.raw, pageByStem))
   const content = md.render(converted)
-  const output = path.join(publicDir, decodeURIComponent(page.url), "index.html")
+  const relativePath = decodeURIComponent(page.url).replace(/^\/|\/$/g, "")
+  const output = relativePath
+	  ? path.join(publicDir, relativePath, "index.html")
+	  : path.join(publicDir, "index.html")
   ensureDir(path.dirname(output))
   fs.writeFileSync(
     output,
