@@ -1,0 +1,21 @@
+{
+  "name": "net-notes-publish",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "sync": "node scripts/sync-content.mjs",
+    "dev": "npm run build && npx serve -l tcp://127.0.0.1:4173 public",
+    "preview": "npx serve -l tcp://127.0.0.1:4173 public"
+  },
+  "dependencies": {
+    "markdown-it": "^14.1.0",
+    "markdown-it-anchor": "^9.2.0",
+    "markdown-it-container": "^4.0.0",
+    "markdown-it-footnote": "^4.0.0",
+    "markdown-it-task-lists": "^2.1.1",
+    "serve": "^14.2.5"
+  },
+  "devDependencies": {}
+}

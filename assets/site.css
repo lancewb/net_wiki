@@ -1,0 +1,370 @@
+:root {
+  color-scheme: light;
+  --bg: #f7f8f9;
+  --surface: #ffffff;
+  --surface-2: #eef2f4;
+  --text: #182026;
+  --muted: #61707c;
+  --line: #d9e0e4;
+  --accent: #0b6b64;
+  --accent-2: #a5442c;
+  --code-bg: #f0f3f5;
+  --shadow: 0 12px 32px rgba(24, 32, 38, 0.08);
+  font-family:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Noto Sans SC", "Microsoft YaHei", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-padding-top: 76px;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.68;
+}
+
+a {
+  color: var(--accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+
+a:hover {
+  color: var(--accent-2);
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -3rem;
+  z-index: 20;
+  background: var(--text);
+  color: #fff;
+  padding: 0.5rem 0.75rem;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: grid;
+  grid-template-columns: auto auto minmax(220px, 420px);
+  gap: 1rem;
+  align-items: center;
+  min-height: 64px;
+  padding: 0.75rem clamp(1rem, 3vw, 2rem);
+  border-bottom: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(14px);
+}
+
+.brand {
+  color: var(--text);
+  font-weight: 750;
+  text-decoration: none;
+}
+
+.sidebar-toggle {
+  display: none;
+  width: 56px;
+  min-height: 36px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--surface);
+  color: var(--text);
+}
+
+.search {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.6rem;
+  align-items: center;
+  justify-self: end;
+  width: min(420px, 100%);
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.search input {
+  width: 100%;
+  min-width: 0;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--surface-2);
+  color: var(--text);
+  padding: 0.55rem 0.7rem;
+  font: inherit;
+}
+
+.search-results {
+  position: fixed;
+  top: 66px;
+  right: clamp(1rem, 3vw, 2rem);
+  z-index: 12;
+  width: min(560px, calc(100vw - 2rem));
+  max-height: 60vh;
+  overflow: auto;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.search-results a {
+  display: block;
+  padding: 0.8rem 1rem;
+  border-bottom: 1px solid var(--line);
+  color: var(--text);
+  text-decoration: none;
+}
+
+.search-results a:last-child {
+  border-bottom: 0;
+}
+
+.search-results strong {
+  display: block;
+  margin-bottom: 0.15rem;
+}
+
+.search-results span {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(240px, 300px) minmax(0, 1fr);
+  gap: clamp(1rem, 3vw, 2rem);
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 1.25rem clamp(1rem, 3vw, 2rem) 4rem;
+}
+
+.sidebar {
+  position: sticky;
+  top: 86px;
+  align-self: start;
+  max-height: calc(100vh - 104px);
+  overflow: auto;
+  padding: 0.75rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+}
+
+.sidebar details {
+  border-bottom: 1px solid var(--line);
+  padding: 0.35rem 0;
+}
+
+.sidebar details:last-child {
+  border-bottom: 0;
+}
+
+.sidebar summary {
+  cursor: pointer;
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.sidebar ul {
+  list-style: none;
+  margin: 0.45rem 0 0;
+  padding: 0;
+}
+
+.sidebar li {
+  margin: 0;
+}
+
+.sidebar a {
+  display: block;
+  padding: 0.26rem 0.2rem;
+  border-radius: 4px;
+  color: var(--text);
+  text-decoration: none;
+  font-size: 0.94rem;
+  line-height: 1.35;
+}
+
+.sidebar a:hover {
+  background: var(--surface-2);
+  color: var(--accent);
+}
+
+.content {
+  min-width: 0;
+}
+
+.note,
+.backlinks {
+  max-width: 920px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+  box-shadow: 0 1px 0 rgba(24, 32, 38, 0.03);
+}
+
+.note {
+  padding: clamp(1.15rem, 3vw, 2.4rem);
+}
+
+.note h1,
+.note h2,
+.note h3,
+.note h4 {
+  line-height: 1.28;
+  margin: 1.7em 0 0.65em;
+}
+
+.note h1 {
+  margin-top: 0;
+  font-size: clamp(1.75rem, 4vw, 2.55rem);
+}
+
+.note h2 {
+  padding-top: 0.3rem;
+  border-top: 1px solid var(--line);
+  font-size: 1.45rem;
+}
+
+.note h3 {
+  font-size: 1.16rem;
+}
+
+.note p,
+.note ul,
+.note ol,
+.note table,
+.note pre,
+.note blockquote {
+  margin-top: 0.8rem;
+  margin-bottom: 0.8rem;
+}
+
+.note table {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  border-collapse: collapse;
+}
+
+.note th,
+.note td {
+  border: 1px solid var(--line);
+  padding: 0.5rem 0.65rem;
+  vertical-align: top;
+}
+
+.note th {
+  background: var(--surface-2);
+}
+
+.note code {
+  border-radius: 4px;
+  background: var(--code-bg);
+  padding: 0.1rem 0.28rem;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 0.92em;
+}
+
+.note pre {
+  overflow-x: auto;
+  border-radius: 8px;
+  background: #172027;
+  color: #eef6f8;
+  padding: 1rem;
+}
+
+.note pre code {
+  background: transparent;
+  padding: 0;
+  color: inherit;
+}
+
+.note blockquote {
+  margin-left: 0;
+  border-left: 4px solid var(--accent);
+  background: var(--surface-2);
+  padding: 0.65rem 1rem;
+  color: #2d3941;
+}
+
+.note img {
+  max-width: 100%;
+  height: auto;
+}
+
+.mermaid {
+  background: var(--surface-2) !important;
+  color: var(--text) !important;
+  text-align: center;
+}
+
+.missing-link {
+  color: var(--accent-2);
+  border-bottom: 1px dashed var(--accent-2);
+}
+
+.backlinks {
+  margin-top: 1rem;
+  padding: 1rem 1.25rem;
+}
+
+.backlinks h2 {
+  margin: 0 0 0.5rem;
+  font-size: 1.1rem;
+}
+
+.backlinks ul {
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+@media (max-width: 860px) {
+  .topbar {
+    grid-template-columns: 1fr auto;
+  }
+
+  .sidebar-toggle {
+    display: inline-block;
+  }
+
+  .search {
+    grid-column: 1 / -1;
+    justify-self: stretch;
+  }
+
+  .layout {
+    grid-template-columns: 1fr;
+    padding-top: 1rem;
+  }
+
+  .sidebar {
+    display: none;
+    position: static;
+    max-height: none;
+  }
+
+  body.sidebar-open .sidebar {
+    display: block;
+  }
+
+  .note,
+  .backlinks {
+    max-width: none;
+  }
+}
+
