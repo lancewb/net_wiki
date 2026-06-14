@@ -7,7 +7,8 @@
     "build": "node scripts/build.mjs",
     "sync": "node scripts/sync-content.mjs",
     "dev": "npm run build && npx serve -l tcp://127.0.0.1:4173 public",
-    "preview": "npx serve -l tcp://127.0.0.1:4173 public"
+    "preview": "wrangler dev",
+    "deploy": "wrangler deploy"
   },
   "dependencies": {
     "markdown-it": "^14.1.0",
@@ -17,5 +18,7 @@
     "markdown-it-task-lists": "^2.1.1",
     "serve": "^14.2.5"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "wrangler": "^4.100.0"
+  }
 }
